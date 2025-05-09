@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=width=device-width, initial-scale=1.0">
+  <title>Gerar Certificados</title>
+  <style>
+    /* Color Palette */
+    :root {
+      /* Core Palette */
+      --primary-color: #483D8B; /* DarkSlateBlue */
+      --text-color: #000000; /* Black */
+      --secondary-text-color: #6c757d; /* Standard grey */
+      --background-color: #f8f9fa; /* Light grey page background */
+      --content-background-color: #FFFFFF; /* White for content boxes */
+      --border-color: #dee2e6; /* Light grey border */
+      --link-color: var(--primary-color); /* DarkSlateBlue */
+      --link-hover-color: #7B68EE; /* MediumSlateBlue */
+
+      /* Buttons */
+      --button-primary-bg: var(--primary-color); /* DarkSlateBlue */
+      --button-primary-text: #FFFFFF;
+      --button-primary-hover-bg: #7B68EE; /* MediumSlateBlue */
+      --button-secondary-bg: #6c757d; /* Grey for cancel */
+      --button-secondary-text: #FFFFFF;
+      --button-secondary-hover-bg: #5a6268;
+      --button-disabled-bg: #cccccc;
+
+      /* Status Messages */
+      --success-bg: #d1e7dd;
+      --success-text: #0f5132;
+      --error-bg: #f8d7da;
+      --error-text: #842029;
+      --info-bg: #cfe2ff;
+      --info-text: #052c65;
+
+      /* Inputs */
+      --input-focus-border: #7B68EE; /* MediumSlateBlue */
+      --input-focus-shadow: rgba(72, 61, 139, 0.25); /* DarkSlateBlue transparent */
+    }
+
+    /* Basic Reset & Body Styles */
+    body, html { margin: 0; padding: 0; height: 100%; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      color: var(--primary-color); /* Use primary color (DarkSlateBlue) */
+      font-weight: 500;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    p {
+        font-size: 14px;
+        color: var(--text-color); /* Darker text for paragraphs */
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Form Styling */
+    #generator-form {
+      background-color: var(--content-background-color);
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      display: flex; /* Align checkbox and label */
+      align-items: center;
+    }
+
+    label {
+      font-weight: bold; /* Changed from normal to bold */
+      font-size: 14px;
+      color: var(--text-color); /* Darker label text */
+      margin-left: 8px; /* Space between checkbox and text */
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      cursor: pointer;
+      width: 16px; /* Slightly larger checkbox */
+      height: 16px;
+      accent-color: var(--primary-color); /* Color the checkbox (DarkSlateBlue) */
+    }
+
+    /* Buttons */
+    .button-group {
+        margin-top: 25px;
+        text-align: right;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-left: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none !important;
+      transition: background-color 0.2s ease;
+    }
+    .btn img {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+    }
+    /* Generate Button */
+    #generate-btn {
+      background-color: var(--button-primary-bg);
+      color: var(--button-primary-text) !important;
+    }
+    #generate-btn:hover {
+        background-color: var(--button-primary-hover-bg);
+    }
+    /* Cancel Button */
+    .btn-cancel {
+      background-color: var(--button-secondary-bg);
+      color: var(--button-secondary-text) !important;
+    }
+    .btn-cancel:hover {
+        background-color: var(--button-secondary-hover-bg);
+    }
+    .btn:disabled {
+        background-color: var(--button-disabled-bg);
+        cursor: not-allowed;
+        opacity: 0.65;
+    }
+
+    /* Status & Results Area */
+    #status, #results {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 4px;
+        text-align: center;
+        font-weight: bold;
+        /* Removed border definition here, handled by specific classes */
+    }
+    #status.info, #results.info {
+        background-color: var(--info-bg);
+        color: var(--info-text);
+    }
+    #status.success, #results.success {
+        background-color: var(--success-bg);
+        color: var(--success-text);
+    }
+    #status.error, #results.error {
+        background-color: var(--error-bg);
+        color: var(--error-text);
+    }
+
+    #results {
+      background-color: var(--content-background-color); /* White background for results box */
+      border: 1px solid var(--border-color); /* Use standard border */
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      display: none; /* Initially hidden */
+      text-align: left;
+      color: var(--text-color); /* Ensure text inside is black */
+      /* Reset status colors if applied */
+      &.success { background-color: var(--content-background-color); color: var(--text-color); border-color: var(--border-color); }
+      &.error { background-color: var(--content-background-color); color: var(--text-color); border-color: var(--border-color); }
+      &.info { background-color: var(--content-background-color); color: var(--text-color); border-color: var(--border-color); }
+    }
+    #results h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: var(--primary-color); /* Use primary color (DarkSlateBlue) for results heading */
+        text-align: center;
+    }
+    #results p {
+        margin-bottom: 8px;
+        font-size: 14px;
+        text-align: left;
+        color: var(--text-color); /* Ensure result text is black */
+    }
+    #results span {
+        font-weight: bold;
+    }
+    #errors {
+        margin-top: 15px;
+        border-top: 1px dashed var(--border-color); /* Use standard border color */
+        padding-top: 10px;
+    }
+    #errors ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+    }
+    #errors li {
+        color: var(--error-text); /* Use defined error text color */
+        font-size: 13px;
+        margin-bottom: 5px;
+        word-break: break-word;
+    }
+
+  </style>
+</head>
+<body>
+  <h2>Gerar Certificados</h2>
+
+  <p>Selecione as linhas na planilha e clique em "Gerar" para criar certificados para as entradas selecionadas.</p>
+
+  <form id="generator-form">
+    <div class="form-group">
+      <input type="checkbox" name="sendEmails" id="sendEmails" checked>
+      <label for="sendEmails">Enviar emails aos participantes</label>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="btn btn-cancel" id="cancel-btn">
+        <img src="https://img.icons8.com/material-outlined/24/ffffff/cancel--v1.png" alt="Cancel"/>Cancelar
+      </button>
+      <button type="submit" class="btn" id="generate-btn">
+        <img src="https://img.icons8.com/material-outlined/24/ffffff/process.png" alt="Generate"/>Gerar Certificados
+      </button>
+    </div>
+  </form>
+
+  <div id="status"></div>
+
+  <div id="results">
+    <h3>Resultados</h3>
+    <p>Total processado: <span id="total">0</span></p>
+    <p>Sucesso: <span id="successful">0</span></p>
+    <p>Falha: <span id="failed">0</span></p>
+    <div id="errors"></div>
+  </div>
+
+  <script>
+    // Form submission handler
+    document.getElementById('generator-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const generateBtn = document.getElementById('generate-btn');
+      const statusDiv = document.getElementById('status');
+      const resultsDiv = document.getElementById('results');
+      const errorsDiv = document.getElementById('errors'); // Get errors div
+
+      generateBtn.disabled = true;
+      generateBtn.innerHTML = '<img src="https://img.icons8.com/material-outlined/24/ffffff/synchronize.png" alt="Processing" style="height:16px; width:16px; margin-right:8px;"/>Processando...'; // Add processing icon
+
+      statusDiv.textContent = 'Gerando certificados... Isso pode levar um tempo.';
+      statusDiv.className = 'info'; // Use info class
+      resultsDiv.style.display = 'none'; // Hide previous results
+      resultsDiv.className = ''; // Clear results class
+      errorsDiv.innerHTML = ''; // Clear previous errors
+
+      const formData = {
+        sendEmails: document.getElementById('sendEmails').checked
+      };
+
+      google.script.run
+        .withSuccessHandler(showResults)
+        .withFailureHandler(showError)
+        .processBatch(formData);
+    });
+
+    // Cancel button handler
+    document.getElementById('cancel-btn').addEventListener('click', function() {
+      google.script.host.close();
+    });
+
+    // Show results function
+    function showResults(results) {
+      const generateBtn = document.getElementById('generate-btn');
+      const statusDiv = document.getElementById('status');
+      const resultsDiv = document.getElementById('results');
+      const errorsDiv = document.getElementById('errors'); // Get errors div
+
+      generateBtn.disabled = false;
+      generateBtn.innerHTML = '<img src="https://img.icons8.com/material-outlined/24/ffffff/process.png" alt="Generate"/>Gerar Certificados'; // Restore generate icon
+
+      statusDiv.textContent = 'Geração de certificados concluída!';
+      statusDiv.className = 'success'; // Use success class
+
+      document.getElementById('total').textContent = results.total;
+      document.getElementById('successful').textContent = results.successful;
+      document.getElementById('failed').textContent = results.failed;
+
+      errorsDiv.innerHTML = ''; // Clear errors div before adding new ones
+
+      if (results.errors && results.errors.length > 0) {
+        const errorList = document.createElement('ul');
+        results.errors.forEach(function(error) {
+          const item = document.createElement('li');
+          item.textContent = error;
+          errorList.appendChild(item);
+        });
+        errorsDiv.appendChild(errorList);
+      }
+
+      resultsDiv.style.display = 'block';
+    }
+
+    // Show error function
+    function showError(error) {
+      const generateBtn = document.getElementById('generate-btn');
+      const statusDiv = document.getElementById('status');
+      const resultsDiv = document.getElementById('results'); // Get results div
+
+      generateBtn.disabled = false;
+      generateBtn.innerHTML = '<img src="https://img.icons8.com/material-outlined/24/ffffff/process.png" alt="Generate"/>Gerar Certificados'; // Restore generate icon
+
+      statusDiv.textContent = 'Erro: ' + error.message;
+      statusDiv.className = 'error'; // Use error class
+      resultsDiv.style.display = 'none'; // Hide results on general failure
+      resultsDiv.className = ''; // Clear results class
+    }
+  </script>
+</body>
+</html>

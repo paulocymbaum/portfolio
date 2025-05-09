@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=width=device-width, initial-scale=1.0">
+  <title>Configuração</title>
+  <style>
+    /* Color Palette */
+    :root {
+      /* Core Palette */
+      --primary-color: #483D8B; /* DarkSlateBlue */
+      --text-color: #000000; /* Black */
+      --secondary-text-color: #6c757d; /* Standard grey */
+      --background-color: #f8f9fa; /* Light grey page background */
+      --content-background-color: #FFFFFF; /* White for content boxes */
+      --border-color: #dee2e6; /* Light grey border */
+      --link-color: var(--primary-color); /* DarkSlateBlue */
+      --link-hover-color: #7B68EE; /* MediumSlateBlue */
+      --code-bg-color: #f1f1f1; /* Light grey for code blocks */
+
+      /* Buttons */
+      --button-primary-bg: var(--primary-color); /* DarkSlateBlue */
+      --button-primary-text: #FFFFFF;
+      --button-primary-hover-bg: #7B68EE; /* MediumSlateBlue */
+      --button-secondary-bg: #6c757d; /* Grey for cancel */
+      --button-secondary-text: #FFFFFF;
+      --button-secondary-hover-bg: #5a6268;
+      --button-disabled-bg: #cccccc;
+
+      /* Status Messages */
+      --success-bg: #d1e7dd;
+      --success-text: #0f5132;
+      --error-bg: #f8d7da;
+      --error-text: #842029;
+      --info-bg: #cfe2ff;
+      --info-text: #052c65;
+
+      /* Inputs */
+      --input-focus-border: #7B68EE; /* MediumSlateBlue */
+      --input-focus-shadow: rgba(72, 61, 139, 0.25); /* DarkSlateBlue transparent */
+    }
+
+    /* Basic Reset & Body Styles */
+    body, html { margin: 0; padding: 0; height: 100%; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      color: var(--primary-color); /* Use primary color (DarkSlateBlue) */
+      font-weight: 500;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    /* Form Styling */
+    #config-form {
+      background-color: var(--content-background-color);
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold; /* Changed from normal to bold */
+      font-size: 14px;
+      color: var(--text-color); /* Ensure labels are black */
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+      color: var(--text-color); /* Ensure input text is black */
+      background-color: var(--content-background-color); /* Ensure input background is white */
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    input[type="text"]:focus {
+      border-color: var(--input-focus-border);
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem var(--input-focus-shadow);
+    }
+
+    .help-text {
+      font-size: 12px;
+      color: var(--secondary-text-color);
+      margin-top: 5px;
+    }
+
+    /* Buttons */
+    .button-group {
+        margin-top: 25px;
+        text-align: right; /* Align buttons to the right */
+    }
+    .btn {
+      display: inline-flex; /* Use flex for icon alignment */
+      align-items: center;
+      justify-content: center;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-left: 10px; /* Space between buttons */
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none !important;
+      transition: background-color 0.2s ease;
+    }
+    .btn img {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+    }
+    /* Save Button */
+    #save-btn {
+      background-color: var(--button-primary-bg);
+      color: var(--button-primary-text) !important;
+    }
+    #save-btn:hover {
+        background-color: var(--button-primary-hover-bg);
+    }
+    /* Cancel Button */
+    .btn-cancel {
+      background-color: var(--button-secondary-bg);
+      color: var(--button-secondary-text) !important;
+    }
+    .btn-cancel:hover {
+        background-color: var(--button-secondary-hover-bg);
+    }
+    .btn:disabled {
+        background-color: var(--button-disabled-bg);
+        cursor: not-allowed;
+        opacity: 0.65;
+    }
+
+    /* Status Messages */
+    #status {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid transparent; /* Base border */
+    }
+    #status.success {
+        background-color: var(--success-bg);
+        color: var(--success-text);
+        border-color: darken(var(--success-bg), 10%);
+    }
+    #status.error {
+        background-color: var(--error-bg);
+        color: var(--error-text);
+        border-color: darken(var(--error-bg), 10%);
+    }
+
+  </style>
+</head>
+<body>
+  <h2>Configuração do Gerador de Certificados</h2>
+
+  <form id="config-form">
+    <div class="form-group">
+      <label for="TEMPLATE_SLIDE_URL">URL do Modelo de Slide</label>
+      <input type="text" name="TEMPLATE_SLIDE_URL" id="TEMPLATE_SLIDE_URL"
+             value="<?= config.TEMPLATE_SLIDE_URL || '' ?>">
+      <p class="help-text">URL do modelo do Google Slide a ser usado para os certificados.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="CONTROL_SHEET_ID">ID da Planilha de Controle</label>
+      <input type="text" name="CONTROL_SHEET_ID" id="CONTROL_SHEET_ID"
+             value="<?= config.CONTROL_SHEET_ID || '' ?>">
+      <p class="help-text">O ID da Planilha Google que armazena os dados dos participantes (encontrado na URL: docs.google.com/spreadsheets/d/ID_DA_PLANILHA/edit).</p>
+    </div>
+
+    <div class="form-group">
+      <label for="OUTPUT_FOLDER_URL">URL da Pasta de Saída</label>
+      <input type="text" name="OUTPUT_FOLDER_URL" id="OUTPUT_FOLDER_URL"
+             value="<?= config.OUTPUT_FOLDER_URL || '' ?>">
+      <p class="help-text">URL da pasta do Drive para salvar os PDFs dos certificados.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="FORM_URL">URL do Formulário (Edição)</label>
+      <input type="text" name="FORM_URL" id="FORM_URL"
+             value="<?= config.FORM_URL || '' ?>">
+      <p class="help-text">URL de edição do Formulário Google que coleta informações dos participantes (necessário para gatilhos).</p>
+    </div>
+
+    <div class="form-group">
+      <label for="ORGANIZATION_NAME">Nome da Organização</label>
+      <input type="text" name="ORGANIZATION_NAME" id="ORGANIZATION_NAME"
+             value="<?= config.ORGANIZATION_NAME || '' ?>">
+      <p class="help-text">Nome da sua organização (usado se o ID da Organização no LinkedIn não for fornecido).</p>
+    </div>
+
+    <div class="form-group">
+      <label for="ORGANIZATION_ID">ID da Organização no LinkedIn (Opcional)</label>
+      <input type="text" name="ORGANIZATION_ID" id="ORGANIZATION_ID"
+             value="<?= config.ORGANIZATION_ID || '' ?>">
+      <p class="help-text">ID numérico da página da sua organização no LinkedIn (substitui o Nome para a URL do LinkedIn).</p>
+    </div>
+
+    <div class="form-group">
+      <label for="INSTRUCTOR_EMAIL">Email do Instrutor</label>
+      <input type="text" name="INSTRUCTOR_EMAIL" id="INSTRUCTOR_EMAIL"
+             value="<?= config.INSTRUCTOR_EMAIL || '' ?>">
+      <p class="help-text">Endereço de email para mostrar como remetente dos emails de certificado.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="ERROR_LOG_SHEET_URL">URL da Planilha de Log de Erros (Opcional)</label>
+      <input type="text" name="ERROR_LOG_SHEET_URL" id="ERROR_LOG_SHEET_URL"
+             value="<?= config.ERROR_LOG_SHEET_URL || '' ?>">
+      <p class="help-text">URL opcional da planilha para registrar erros.</p>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="btn btn-cancel" id="cancel-btn">
+        <img src="https://img.icons8.com/material-outlined/24/ffffff/cancel--v1.png" alt="Cancel"/>Cancelar
+      </button>
+      <button type="submit" class="btn" id="save-btn">
+        <img src="https://img.icons8.com/material-outlined/24/ffffff/save.png" alt="Save"/>Salvar Configuração
+      </button>
+    </div>
+  </form>
+
+  <div id="status"></div>
+
+  <script>
+    // Form submission handler
+    document.getElementById('config-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const saveBtn = document.getElementById('save-btn');
+      const statusDiv = document.getElementById('status');
+      saveBtn.disabled = true;
+      saveBtn.innerHTML = '<img src="https://img.icons8.com/material-outlined/24/ffffff/synchronize.png" alt="Saving" style="height:16px; width:16px; margin-right:8px;"/>Salvando...'; // Add saving icon
+      statusDiv.innerHTML = ''; // Clear previous status
+      statusDiv.className = ''; // Clear status classes
+
+      const formData = {
+        TEMPLATE_SLIDE_URL: document.getElementById('TEMPLATE_SLIDE_URL').value.trim(),
+        CONTROL_SHEET_ID: document.getElementById('CONTROL_SHEET_ID').value.trim(),
+        OUTPUT_FOLDER_URL: document.getElementById('OUTPUT_FOLDER_URL').value.trim(),
+        FORM_URL: document.getElementById('FORM_URL').value.trim(),
+        ORGANIZATION_NAME: document.getElementById('ORGANIZATION_NAME').value.trim(),
+        ORGANIZATION_ID: document.getElementById('ORGANIZATION_ID').value.trim(),
+        INSTRUCTOR_EMAIL: document.getElementById('INSTRUCTOR_EMAIL').value.trim(),
+        ERROR_LOG_SHEET_URL: document.getElementById('ERROR_LOG_SHEET_URL').value.trim()
+      };
+
+      google.script.run
+        .withSuccessHandler(function(result) {
+          saveBtn.disabled = false;
+          saveBtn.innerHTML = '<img src="https://img.icons8.com/material-outlined/24/ffffff/save.png" alt="Save"/>Salvar Configuração'; // Restore save icon
+
+          statusDiv.textContent = result.message;
+          statusDiv.className = result.success ? 'success' : 'error'; // Use classes for styling
+
+          if (result.success) {
+            setTimeout(function() {
+              google.script.host.close();
+            }, 2000);
+          }
+        })
+        .withFailureHandler(function(error) {
+          saveBtn.disabled = false;
+          saveBtn.innerHTML = '<img src="https://img.icons8.com/material-outlined/24/ffffff/save.png" alt="Save"/>Salvar Configuração'; // Restore save icon
+
+          statusDiv.textContent = 'Erro: ' + error.message;
+          statusDiv.className = 'error'; // Use class for styling
+        })
+        .saveConfig(formData);
+    });
+
+    // Cancel button handler
+    document.getElementById('cancel-btn').addEventListener('click', function() {
+      google.script.host.close();
+    });
+  </script>
+</body>
+</html>

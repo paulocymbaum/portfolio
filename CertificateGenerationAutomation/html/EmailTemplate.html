@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_blank">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seu Certificado de Conclusão</title>
+  <style>
+    /* Color Palette Variables */
+    :root {
+      /* Core Palette */
+      --primary-color: #483D8B; /* DarkSlateBlue */
+      --text-color: #000000; /* Black */
+      --secondary-text-color: #6c757d; /* Grey */
+      --background-color: #f8f9fa; /* Light grey page background */
+      --content-background-color: #FFFFFF; /* White content area */
+      --border-color: #dee2e6; /* Light grey border */
+      --link-color: var(--primary-color); /* DarkSlateBlue */
+      --link-hover-color: #7B68EE; /* MediumSlateBlue */
+
+      /* Buttons (Specific to Email) */
+      --button-primary-bg: #34A853; /* Green for main action (View Cert) */
+      --button-primary-text: #FFFFFF;
+      --button-primary-hover-bg: #2e8a4a; /* Darker Green */
+      --button-secondary-bg: #483D8B; /* DarkSlateBlue for LinkedIn */
+      --button-secondary-text: #FFFFFF;
+      --button-secondary-hover-bg: #7B68EE; /* MediumSlateBlue */
+
+      /* Footer */
+      --footer-bg-color: #f1f1f1; /* Slightly darker footer bg */
+      --footer-text-color: var(--secondary-text-color); /* Use secondary text color for footer */
+    }
+
+    /* Basic Reset & Body Styles */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text-color); background-color: var(--background-color); }
+
+    /* Container */
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: var(--content-background-color);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Header */
+    .header {
+      background-color: var(--primary-color); /* Use primary color (DarkSlateBlue) */
+      color: #ffffff; /* White text on navy blue */
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    /* Content Area */
+    .content {
+      padding: 30px;
+      text-align: left;
+    }
+    .content p {
+      margin: 0 0 15px 0;
+      font-size: 16px;
+      color: var(--text-color); /* Ensure content text is black */
+    }
+    .content strong {
+      color: var(--text-color); /* Use black for emphasis */
+      font-weight: bold;
+    }
+
+    /* Buttons */
+    .button-container {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .button {
+      display: inline-block;
+      background-color: var(--button-primary-bg);
+      color: var(--button-primary-text) !important; /* Ensure text color */
+      padding: 12px 25px;
+      text-decoration: none !important;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
+      margin: 5px;
+      border: 1px solid #483D8B; /* DarkSlateBlue outline */
+      cursor: pointer;
+      line-height: 1;
+      transition: background-color 0.2s ease;
+    }
+    .button img {
+      vertical-align: middle;
+      margin-right: 8px;
+      height: 16px;
+      width: 16px;
+      border: 0; /* Ensure no border on image */
+    }
+    .button-secondary {
+      background-color: var(--button-secondary-bg); /* DarkSlateBlue */
+      color: var(--button-secondary-text) !important; /* Ensure text color */
+    }
+    /* Hover states */
+    .button:hover {
+        background-color: var(--button-primary-hover-bg);
+    }
+    .button-secondary:hover {
+        background-color: var(--button-secondary-hover-bg); /* MediumSlateBlue */
+    }
+
+    /* Footer */
+    .footer {
+      font-size: 12px;
+      color: var(--footer-text-color); /* Use variable */
+      text-align: center;
+      margin-top: 20px;
+      padding: 20px;
+      border-top: 1px solid var(--border-color);
+      background-color: var(--footer-bg-color); /* Use variable */
+    }
+    .footer p {
+      margin: 5px 0;
+      color: var(--footer-text-color); /* Use variable */
+      font-size: 12px; /* Ensure consistent font size */
+    }
+
+    /* Horizontal Rule */
+    hr {
+        border: 0;
+        border-top: 1px solid var(--border-color); /* Use variable */
+        margin: 20px 0;
+    }
+
+    /* Responsive adjustments (basic) */
+    @media screen and (max-width: 600px) {
+      .container {
+        width: 100% !important;
+        margin: 10px 0;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+      }
+      .content {
+        padding: 20px;
+      }
+      .header {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Using tables for better email client compatibility -->
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td align="center" style="background-color: var(--background-color);"> <!-- Ensures background color fills viewport -->
+        <!--[if (gte mso 9)|(IE)]>
+        <table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+        <tr>
+        <td align="center" valign="top" width="600">
+        <![endif]-->
+        <div class="container">
+          <div class="header">
+            <h1>Parabéns, <?= name ?>!</h1>
+          </div>
+
+          <div class="content">
+            <p>Ótima notícia! Você concluiu com sucesso o curso <strong><?= course ?></strong>.</p>
+            <? if (duration) { ?> <!-- Conditionally show duration -->
+              <p>Carga horária: <?= duration ?></p>
+            <? } ?>
+            <p>Estamos felizes em apresentar seu certificado de conclusão. Clique no botão abaixo para visualizar e baixar:</p>
+
+            <div class="button-container">
+              <!-- Updated Button 1 -->
+              <a class="button" href="<?= pdfUrl ?>" target="_blank">
+                <img src="https://img.icons8.com/material-outlined/24/000000/document.png" alt="View" style="vertical-align: middle; margin-right: 8px; height: 16px; width: 16px; border:0;" height="16" width="16" border="0"/>Visualizar Certificado
+              </a>
+            </div>
+
+            <p>Mostre sua nova conquista para sua rede! Adicione este certificado diretamente ao seu perfil do LinkedIn:</p>
+
+            <div class="button-container">
+              <!-- Updated Button 2 -->
+              <a class="button button-secondary" href="<?= linkedInUrl ?>" target="_blank">
+                <img src="https://img.icons8.com/material-outlined/24/000000/linkedin.png" alt="LinkedIn" style="vertical-align: middle; margin-right: 8px; height: 16px; width: 16px; border:0;" height="16" width="16" border="0"/>Adicionar ao LinkedIn
+              </a>
+            </div>
+
+            <p>Parabéns mais uma vez!</p>
+            <p>Atenciosamente,<br>
+               <?= CONFIG.ORGANIZATION_NAME || 'Sua Organização' ?> <!-- Use Org Name from Config -->
+            </p>
+            <hr> <!-- Use standard hr -->
+            <p>
+              <strong>Emitido em:</strong> <?= date ?> <br>
+              <? if (certificateId) { ?>
+                <strong>ID do Certificado:</strong> <?= certificateId ?>
+              <? } ?>
+            </p>
+          </div>
+
+          <div class="footer">
+            <p>Este certificado foi emitido em <?= date ?>.</p>
+            <? if (certificateId) { ?> <!-- Conditionally show ID in footer -->
+              <p>ID do Certificado: <?= certificateId ?></p>
+            <? } ?>
+            <p>Este é um email automático, por favor não responda.</p>
+            <!-- Optional: Add organization address or contact info here -->
+          </div>
+        </div>
+        <!--[if (gte mso 9)|(IE)]>
+        </td>
+        </tr>
+        </table>
+        <![endif]-->
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

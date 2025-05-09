@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <!-- Using Add-ons CSS for base styling, but overriding where needed -->
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <style>
+      /* Color Palette */
+      :root {
+        /* Core Palette */
+        --primary-color: #483D8B; /* DarkSlateBlue */
+        --text-color: #000000; /* Black */
+        --secondary-text-color: #6c757d; /* Standard grey */
+        --background-color: #FFFFFF; /* White page background */
+        --content-background-color: #FFFFFF; /* White for content boxes */
+        --border-color: #dee2e6; /* Light grey border */
+        --link-color: var(--primary-color); /* DarkSlateBlue */
+        --link-hover-color: #7B68EE; /* MediumSlateBlue */
+        --code-bg-color: #f1f1f1; /* Light grey for code blocks */
+
+        /* Buttons */
+        --button-primary-bg: var(--primary-color); /* DarkSlateBlue */
+        --button-primary-text: #FFFFFF;
+        --button-primary-hover-bg: #7B68EE; /* MediumSlateBlue */
+        --button-secondary-bg: #6c757d; /* Added for consistency */
+        --button-secondary-text: #FFFFFF; /* Added for consistency */
+        --button-secondary-hover-bg: #5a6268; /* Added for consistency */
+        --button-disabled-bg: #cccccc; /* Added for consistency */
+
+        /* Status Messages (Added for consistency - Not directly used here) */
+        --success-bg: #d1e7dd;
+        --success-text: #0f5132;
+        --error-bg: #f8d7da;
+        --error-text: #842029;
+        --info-bg: #cfe2ff;
+        --info-text: #052c65;
+
+        /* Inputs (Added for consistency - Not directly used here) */
+        --input-focus-border: #7B68EE; /* MediumSlateBlue */
+        --input-focus-shadow: rgba(72, 61, 139, 0.25); /* DarkSlateBlue transparent */
+      }
+
+      body {
+        padding: 15px;
+        color: var(--text-color); /* Ensure base text is black */
+        background-color: var(--background-color);
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Consistent font */
+      }
+      .container {
+        margin-top: 10px;
+      }
+      h2 { /* Main Title */
+        color: var(--primary-color); /* DarkSlateBlue */
+        border-bottom: 2px solid var(--primary-color); /* DarkSlateBlue */
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+      h3 { /* Section Headers */
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 5px;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        font-weight: bold;
+        color: var(--primary-color); /* DarkSlateBlue */
+      }
+      h4 { /* Sub-Headers */
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: var(--text-color); /* Black for sub-headers */
+        font-weight: bold;
+      }
+      p, li {
+        color: var(--text-color); /* Ensure paragraph and list text is black */
+        line-height: 1.6;
+        font-size: 14px; /* Slightly larger base font */
+      }
+      ul, ol {
+        margin-top: 5px;
+        margin-left: 20px;
+        padding-left: 15px; /* Ensure padding for list markers */
+      }
+      ul { list-style-type: disc; }
+      ol { list-style-type: decimal; }
+      li { margin-bottom: 10px; }
+
+      code {
+        background-color: var(--code-bg-color);
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        color: var(--text-color); /* Ensure code text is black */
+        border: 1px solid var(--border-color); /* Subtle border for code */
+      }
+      .button-container {
+        margin-top: 30px;
+        text-align: right;
+        border-top: 1px solid var(--border-color);
+        padding-top: 20px;
+      }
+      /* Overriding add-ons.css for button */
+      button.action {
+        background-color: var(--button-primary-bg); /* DarkSlateBlue */
+        color: var(--button-primary-text);
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-weight: bold;
+        text-align: center; /* Ensure text is centered */
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      button.action:hover {
+        background-color: var(--button-primary-hover-bg); /* MediumSlateBlue */
+      }
+
+      .index-link {
+        text-decoration: none;
+        color: var(--link-color); /* DarkSlateBlue */
+        font-weight: 500; /* Slightly bolder index links */
+      }
+      .index-link:hover {
+        text-decoration: underline;
+        color: var(--link-hover-color); /* MediumSlateBlue */
+      }
+      .section {
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px dashed var(--border-color);
+      }
+      .section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      /* Ensure good contrast for nested lists */
+      ol ol, ul ul, ol ul, ul ol {
+          margin-top: 8px;
+          margin-bottom: 8px;
+      }
+      strong {
+          font-weight: bold;
+          color: var(--text-color); /* Ensure strong text is black */
+      }
+      em {
+          font-style: italic;
+          color: var(--secondary-text-color); /* Use secondary grey color for emphasis/examples */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Instruções & Ajuda</h2>
+
+      <h3>Índice</h3>
+      <ul>
+        <li><a href="#configuracao" class="index-link">1. Como configurar sua ferramenta (Setup Inicial)?</a></li>
+        <li><a href="#primeiro-certificado" class="index-link">2. Como gerar seu primeiro certificado de teste?</a></li>
+        <li><a href="#email-externo" class="index-link">3. Como configurar um e-mail externo?</a></li>
+        <li><a href="#boas-praticas" class="index-link">4. Boas práticas</a></li>
+        <li><a href="#geracao" class="index-link">5. Gerando Certificados (Resumo)</a></li>
+        <li><a href="#troubleshooting" class="index-link">6. Solução de Problemas (Troubleshooting)</a></li>
+      </ul>
+
+      <div id="configuracao" class="section">
+        <h3>1. Como configurar sua ferramenta (Setup Inicial)?</h3>
+
+        <h4>Passos Iniciais (Após Receber o Projeto)</h4>
+        <p>Bem-vindo ao Gerador de Certificados! Antes de começar a gerar certificados, siga estes passos iniciais após receber os arquivos do projeto:</p>
+        <ol>
+            <li><strong>Abra o Editor de Apps Script:</strong> No Google Drive, encontre o arquivo do projeto Apps Script (geralmente chamado 'GeradorDeCertificados' ou similar). Clique duas vezes para abri-lo no editor de scripts.</li>
+            <li><strong>Execute o <code>initialSetup</code>:</strong>
+                <ul>
+                    <li>No editor, localize a função chamada <code>initialSetup</code> (No arquivo <code>Appscript.gs</code>).</li>
+                    <li>Selecione essa função no menu suspenso ao lado do ícone de 'play' (Executar) e clique em 'Executar'.</li>
+                    <li><strong>Autorize o Script:</strong> Na primeira vez, você precisará autorizar o script a acessar seus dados do Google (Drive, Planilhas, Gmail, etc.). Siga as instruções na tela. Pode ser necessário clicar em "Avançado" e "Acessar [nome do projeto] (não seguro)", mas isso é normal para scripts personalizados.</li>
+                    <li>Esta função criará os arquivos necessários (Template de Slide, Planilha de Controle, Formulário de Requisição, Pastas no Drive) e configurará os gatilhos automáticos (como o que roda quando um formulário é enviado). <strong>Execute esta função apenas UMA VEZ.</strong></li>
+                </ul>
+            </li>
+            <li><strong>Personalize o Template:</strong> Abra o Google Slide 'Certificate Template' criado na pasta 'GeradorDeCertificados'. Edite o design conforme sua necessidade. Certifique-se de que os placeholders (marcadores de texto) estejam presentes e corretos: <code>{{NAME}}</code>, <code>{{COURSE}}</code>, <code>{{DATE}}</code>, <code>{{CERTIFICATE_ID}}</code>, <code>{{DURATION}}</code> (opcional).</li>
+        </ol>
+
+        <h4>Configurações da Ferramenta</h4>
+        <p>Após executar o <code>initialSetup</code> e personalizar o template, vá ao menu <strong>Ferramentas de Certificado > Configurações</strong> na Planilha de Controle ('Certificate Control Sheet'). Você precisará preencher os seguintes campos:</p>
+        <ul>
+          <li>
+            <strong>URL do Template (Slide):</strong> Abra o Google Slide 'Certificate Template' criado na pasta 'GeradorDeCertificados'. Copie a URL completa da barra de endereços do seu navegador.
+            <br><em>Exemplo: <code>https://docs.google.com/presentation/d/1aBcDeFgHiJkLmNoPqRsTuVwXyZaBcDeFgHiJkLmNoP/edit</code></em>
+          </li>
+          <li>
+            <strong>ID da Planilha de Controle:</strong> Abra a Google Sheet 'Certificate Control Sheet' criada. Olhe para a URL na barra de endereços do seu navegador. O ID é a longa sequência de caracteres entre <code>/d/</code> e <code>/edit</code>. Copie apenas essa sequência.
+            <br><em>Exemplo de URL: <code>https://docs.google.com/spreadsheets/d/</code><strong><code>1aBcDeFgHiJkLmNoPqRsTuVwXyZaBcDeFgHiJkLmNoP</code></strong><code>/edit#gid=0</code></em>
+            <br><em>Copie apenas: <code>1aBcDeFgHiJkLmNoPqRsTuVwXyZaBcDeFgHiJkLmNoP</code></em>
+          </li>
+          <li>
+            <strong>URL da Pasta de Saída:</strong> Abra a pasta 'Generated Certificates' dentro de 'GeradorDeCertificados'. Copie a URL completa da barra de endereços.
+            <br><em>Exemplo: <code>https://drive.google.com/drive/folders/1aBcDeFgHiJkLmNoPqRsTuVwXyZaBcDeF</code></em>
+          </li>
+          <li>
+            <strong>URL do Formulário (Edição):</strong> Abra o Google Form 'Certificate Request Form' criado. Clique no botão "Enviar" (ou similar) e depois no ícone de link (<>) para obter o link compartilhável. <strong>Importante:</strong> Volte à visualização de edição do formulário (onde você adiciona perguntas) e copie a URL da barra de endereços. Esta é a URL de edição necessária.
+            <br><em>Exemplo: <code>https://docs.google.com/forms/d/1aBcDeFgHiJkLmNoPqRsTuVwXyZaBcDeFgHiJkLmNoP/edit</code></em>
+          </li>
+          <li>
+            <strong>Nome da Organização:</strong> O nome da sua instituição ou empresa que aparecerá no certificado e no email.
+          </li>
+          <li>
+            <strong>Email do Instrutor (Remetente/Resposta):</strong> O email que será usado como remetente (se configurado como alias, veja seção 3) e como endereço de "responder para".
+          </li>
+          <li>
+            <strong>ID da Organização LinkedIn (Opcional):</strong> Se sua organização tem uma página no LinkedIn, usar o ID numérico garante que o link "Adicionar ao Perfil" aponte para a organização correta. Para encontrá-lo:
+            <ol style="margin-left: 15px; margin-top: 5px;">
+              <li>Faça login no LinkedIn.</li>
+              <li>Procure pelo nome da sua organização na barra de busca e navegue até a página "Página" (Company Page) dela.</li>
+              <li>Olhe a URL na barra de endereços do seu navegador.</li>
+              <li>A URL geralmente se parece com <code>https://www.linkedin.com/company/</code><strong><code>1234567</code></strong><code>/</code> (pode haver mais texto depois).</li>
+              <li>O ID da organização é o número que aparece logo após <code>/company/</code>. Copie apenas este número.</li>
+            </ol>
+            <em>Se você não encontrar um número, pode deixar este campo em branco; o script usará o "Nome da Organização".</em>
+          </li>
+          <li>
+            <strong>URL da Planilha de Logs de Erro (Opcional):</strong> Abra a Google Sheet 'Error Log Sheet' criada. Copie a URL completa da barra de endereços.
+          </li>
+        </ul>
+        <p>Clique em "Salvar" após preencher todos os campos obrigatórios.</p>
+      </div>
+
+      <div id="primeiro-certificado" class="section">
+        <h3>2. Como gerar seu primeiro certificado de teste?</h3>
+        <p>Após configurar a ferramenta (passo 1), você pode gerar um certificado de teste usando o formulário:</p>
+        <h4>Método 1: Usando o Formulário</h4>
+        <ol>
+          <li><strong>Abra o Formulário Publicado:</strong> Vá para o Google Form 'Certificate Request Form'. Clique no ícone de olho (Visualizar) no canto superior direito para abrir a versão que os alunos usarão.</li>
+          <li><strong>Preencha os Dados:</strong> Insira dados de teste:
+            <ul>
+              <li>Seu próprio endereço de e-mail (para receber o resultado).</li>
+              <li>Nome Completo: "Aluno Teste"</li>
+              <li>Nome do Curso: "Curso Teste"</li>
+              <li>Duração do Curso: "10 horas" (Opcional)</li>
+              <li>Data de Conclusão: Selecione uma data.</li>
+            </ul>
+          </li>
+          <li><strong>Envie o Formulário.</strong></li>
+          <li><strong>Verifique os Resultados:</strong>
+            <ul>
+              <li>Aguarde alguns instantes.</li>
+              <li>Verifique sua caixa de entrada de e-mail. Você deve receber um email com o link do certificado.</li>
+              <li>Abra a "Certificate Control Sheet". Uma nova linha deve aparecer com o status "Generated" e os links para o PDF e LinkedIn.</li>
+              <li>Verifique a pasta "Generated Certificates" no Google Drive. O PDF do certificado deve estar lá.</li>
+            </ul>
+          </li>
+        </ol>
+        <h4><s>Método 2: Usando a Planilha (Segunda Via)</s> - Em Construção</h4>
+        <p><em>A funcionalidade de gerar uma segunda via ou re-gerar certificados diretamente pela planilha ainda está em desenvolvimento. Por favor, utilize o método do formulário para gerar certificados.</em></p>
+      </div>
+
+      <div id="email-externo" class="section">
+        <h3>3. Como configurar um e-mail externo?</h3>
+        <p>Por padrão, os emails são enviados pela conta Google que executa o script. Se você deseja que os emails sejam enviados de um endereço diferente (ex: <code>contato@suaempresa.com</code> ou <code>professor@universidade.edu</code>), siga estes passos:</p>
+        <ol>
+          <li><strong>Configure o Email nas Configurações:</strong> Primeiro, insira o email externo desejado no campo "Email do Instrutor (Remetente/Resposta)" nas configurações da ferramenta (passo 1).</li>
+          <li><strong>Acesse as Configurações do Gmail:</strong> Abra o Gmail da conta Google que está executando o script (a conta dona dos arquivos no Drive).</li>
+          <li><strong>Vá para Contas e Importação:</strong> Clique no ícone de engrenagem (Configurações) > Ver todas as configurações > Contas e importação.</li>
+          <li><strong>Adicione Outro Endereço de Email:</strong> Na seção "Enviar e-mail como:", clique em "Adicionar outro endereço de e-mail".</li>
+          <li><strong>Preencha as Informações:</strong> Digite o nome que você quer que apareça como remetente e o endereço de e-mail externo que você configurou no passo 1. Deixe a opção "Tratar como um alias" marcada.</li>
+          <li><strong>Verificação:</strong> O Gmail enviará um email de verificação para o endereço externo. Abra esse email e clique no link de confirmação ou insira o código fornecido.</li>
+          <li><strong>Pronto!</strong> Uma vez verificado, o script tentará automaticamente enviar emails usando este endereço externo como remetente (`From:`). Se a verificação falhar ou não for feita, o script enviará pela conta padrão e registrará um aviso nos logs.</li>
+        </ol>
+      </div>
+
+      <div id="boas-praticas" class="section">
+        <h3>4. Boas práticas</h3>
+        <ul>
+          <li>
+            <strong>Não delete colunas geradas:</strong> A "Certificate Control Sheet" e a "Form Responses 1" são essenciais para o funcionamento. Evite deletar colunas que foram criadas automaticamente (Timestamp, Status, Certificate ID, etc.), pois o script depende delas para ler e escrever dados.
+          </li>
+          <li>
+            <strong>Adicionar colunas é permitido:</strong> Você PODE adicionar novas colunas à direita das colunas existentes na "Certificate Control Sheet" para seus próprios controles (ex: dados demográficos, NPS, CSAT, turma, etc.). O script ignorará essas colunas extras.
+          </li>
+          <li>
+            <strong>Mantenha os PDFs na pasta:</strong> Os links nos emails e na planilha apontam para os arquivos PDF na pasta "Generated Certificates". Se você mover, renomear ou deletar um PDF dessa pasta, o link correspondente deixará de funcionar para o aluno.
+          </li>
+          <li>
+            <strong>Backup:</strong> Considere fazer backups periódicos da pasta "GeradorDeCertificados", especialmente da Planilha de Controle.
+          </li>
+        </ul>
+      </div>
+
+      <div id="geracao" class="section">
+        <h3>5. Gerando Certificados (Resumo)</h3>
+        <ul>
+          <li><strong>Via Formulário:</strong> Compartilhe o 'Certificate Request Form'. Submissões disparam automaticamente a geração.</li>
+          <li><s><strong>Manualmente (Segunda Via):</strong> Use 'Ferramentas de Certificado > Segunda Via de Certificado' na Planilha para gerar ou re-gerar certificados para linhas específicas.</s> <strong>(Em Construção)</strong></li>
+          <li>Verifique a 'Certificate Control Sheet' para status ('Generated', 'Failed', 'Re-generated').</li>
+          <li>PDFs gerados são salvos na pasta 'Generated Certificates'.</li>
+          <li>Emails são enviados aos participantes com links para o PDF e atualização do perfil LinkedIn.</li>
+        </ul>
+      </div>
+
+      <div id="troubleshooting" class="section">
+        <h3>6. Solução de Problemas (Troubleshooting)</h3>
+        <ul>
+          <li><strong>Erros durante geração:</strong> Verifique a coluna 'Error Message' na 'Certificate Control Sheet'.</li>
+          <li><strong>Logs detalhados:</strong> Vá para <code>Extensões > Apps Script > Execuções</code> para ver logs detalhados.</li>
+          <li><strong>Emails não enviados do endereço correto:</strong> Garanta que o 'Email do Instrutor' configurado seja um alias verificado no Gmail da conta que executa o script (Veja Seção 3).</li>
+          <li><strong>Placeholders não substituídos:</strong> Verifique se os placeholders no seu template Google Slide correspondem EXATAMENTE a <code>{{NAME}}</code>, <code>{{COURSE}}</code>, etc. (sensível a maiúsculas/minúsculas).</li>
+          <li><strong>Gatilho do formulário não funciona:</strong> Execute 'Ferramentas de Certificado > Criar Gatilhos' novamente. Garanta que a URL do Formulário nas Configurações seja a URL de *Edição*.</li>
+          <li><strong>Erro "UI component not loaded":</strong> Recarregue a planilha e tente abrir o menu novamente.</li>
+        </ul>
+      </div>
+
+      <div class="button-container">
+        <button class="action" onclick="google.script.host.close()">Fechar</button>
+      </div>
+    </div>
+
+    <script>
+      // No specific script needed for this simple dialog, just the close button handler.
+      // Add smooth scrolling for index links
+      document.querySelectorAll('.index-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
