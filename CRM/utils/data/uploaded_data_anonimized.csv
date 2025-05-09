@@ -1,0 +1,60 @@
+id,first_name,last_name,email,phone,company,position,lead_source,status,created_date,last_contact,notes
+1,John,Smith,jsmith@example.com,555-123-4567,Acme Corp,Sales Manager,Website,Active,2020-05-15,2025-04-10,Renewed premium tier for 5th consecutive year
+2,Sarah,Johnson,sjohnson@example.org,555-234-5678,XYZ Industries,Marketing Director,Referral,Cancelled,2020-06-20,2022-08-12,Cancelled after 2 years due to budget cuts
+3,Michael,Williams,mwilliams@example.net,555-345-6789,Tech Solutions,CTO,Trade Show,Active,2020-07-15,2025-04-05,Upgraded to enterprise plan in 2023
+4,Emily,Brown,ebrown@example.com,555-456-7890,Global Services,HR Manager,Cold Call,Inactive,2020-08-01,2021-04-15,Initial 1-year subscription not renewed
+5,David,Jones,djones@example.org,555-567-8901,Innovate Inc,CEO,Partner,Active,2020-09-05,2025-04-08,Downgraded from premium to standard in 2024
+6,Jennifer,Davis,jdavis@example.net,555-678-9012,First National,CFO,Conference,Cancelled,2020-10-10,2024-01-11,Cancelled after merger with competitor
+7,Robert,Miller,rmiller@example.com,555-789-0123,Bright Ideas,VP Operations,Email Campaign,Active,2020-11-15,2025-03-28,Seasonal usage pattern - increases Q4 each year
+8,Lisa,Wilson,lwilson@example.org,555-890-1234,Quantum Group,IT Director,Webinar,Active,2020-12-20,2025-04-14,Brief pause in 2022, then resumed subscription
+9,James,Taylor,jtaylor@example.net,555-901-2345,Urban Design,Project Manager,Advertisement,Churned,2021-01-25,2023-07-02,Left after 2.5 years for competitor service
+10,Patricia,Anderson,panderson@example.com,555-012-3456,Elite Brands,Purchasing Agent,Website,Active,2021-02-01,2025-04-13,Multiple renewal discounts applied over 4 years
+11,Thomas,Moore,tmoore@example.org,555-123-4567,Creative Solutions,Marketing Manager,Social Media,Reactivated,2021-03-05,2025-04-09,Cancelled in 2022, returned in 2024 with premium plan
+12,Jessica,Martin,jmartin@example.net,555-234-5678,Capital Group,Financial Analyst,Referral,Cancelled,2021-04-10,2024-04-07,Used service for 3 years before internal solution developed
+13,Christopher,Lee,clee@example.com,555-345-6789,Precision Manufacturing,Operations Director,Trade Show,Active,2021-05-15,2025-04-16,Started with basic plan, now on enterprise tier
+14,Elizabeth,Walker,ewalker@example.org,555-456-7890,Green Energy,Sustainability Manager,Webinar,Dormant,2021-06-20,2023-04-01,No activity for 2 years but subscription not cancelled
+15,Daniel,Hall,dhall@example.net,555-567-8901,Atlas Corp,Regional Manager,Cold Call,Active,2021-07-25,2025-04-03,Consistent monthly usage since sign-up
+16,Michelle,Rodriguez,mrodriguez@example.com,555-678-9012,Summit Technologies,Product Manager,Website,Active,2021-08-10,2025-04-05,Increased licenses from 5 to 25 over 4 years
+17,Richard,Thompson,rthompson@example.org,555-789-0123,Pacific Ventures,COO,Partner Referral,Cancelled,2021-09-15,2023-05-20,Left for competitor offering integrated solution
+18,Laura,Garcia,lgarcia@example.net,555-890-1234,Blue Ocean Consulting,VP Marketing,Conference,Active,2021-10-18,2025-03-12,Multi-year contract signed in 2022, renewed in 2025
+19,William,Clark,wclark@example.com,555-901-2345,Golden State Finance,Senior Analyst,LinkedIn,Lost,2021-11-22,2022-01-15,Trial period expired without conversion
+20,Karen,Allen,kallen@example.org,555-012-3456,Riverdale Manufacturing,Operations Manager,Trade Show,Active,2022-01-05,2025-04-18,Contract renegotiated twice with expanded services
+21,Steven,Young,syoung@example.net,555-123-4567,Sunrise Media,Digital Director,Webinar,Active,2022-02-10,2025-04-07,Heavy platform usage, top 5% of customers
+22,Rebecca,King,rking@example.com,555-234-5678,Apex Solutions,IT Manager,Referral,Cancelled,2022-03-15,2024-08-22,Service no longer needed after restructuring
+23,Joseph,Wright,jwright@example.org,555-345-6789,Metro Logistics,Supply Chain Director,Cold Email,Active,2022-04-20,2025-03-30,Added custom integration module in 2023
+24,Sandra,Lopez,slopez@example.net,555-456-7890,Northern Manufacturing,CIO,Partner Referral,Active,2022-05-25,2025-04-14,Enterprise agreement covering multiple subsidiaries
+25,Andrew,Hill,ahill@example.com,555-567-8901,Coastal Services,HR Director,Advertisement,Churned,2022-06-30,2023-06-25,Left during price increase in 2023
+26,Nancy,Scott,nscott@example.org,555-678-9012,Evergreen Solutions,Marketing Coordinator,Website,Active,2022-07-15,2025-04-02,Upgraded to team plan after successful solo trial
+27,Brian,Adams,badams@example.net,555-789-0123,Horizon Enterprises,CFO,Conference,Paused,2022-08-20,2024-09-18,Temporarily paused during company reorganization
+28,Donna,Green,dgreen@example.com,555-890-1234,Central Health,Procurement Manager,Search Engine,Cancelled,2022-09-25,2023-11-30,Cancelled after one year due to budget constraints
+29,Kevin,Baker,kbaker@example.org,555-901-2345,Western Dynamics,Systems Analyst,Email Campaign,Active,2022-10-30,2025-04-06,Consistent high-value subscriber since joining
+30,Margaret,Nelson,mnelson@example.net,555-012-3456,Silver Tech,Innovation Director,Webinar,Active,2022-11-10,2025-03-22,Piloted in one department, now company-wide deployment
+31,Anthony,Carter,acarter@example.com,555-123-4567,Dynamic Solutions,Project Coordinator,Cold Call,Cancelled,2022-12-15,2024-02-10,Cancelled after acquisition by larger company
+32,Carol,Mitchell,cmitchell@example.org,555-234-5678,Valley Foods,Purchasing Director,Trade Show,Active,2023-01-20,2025-04-11,Renewed with expanded package for international offices
+33,Paul,Roberts,proberts@example.net,555-345-6789,Alliance Insurance,Risk Manager,Referral,Active,2023-02-25,2025-04-15,Uses premium analytics package, high satisfaction score
+34,Sharon,Cook,scook@example.com,555-456-7890,Modern Design,Creative Director,Social Media,Churned,2023-03-02,2024-05-18,Left after experiencing technical issues
+35,Mark,Morgan,mmorgan@example.org,555-567-8901,Premier Logistics,Operations Supervisor,Website,Active,2023-04-05,2025-04-01,Started with trial, converted to paid within 3 days
+36,Ruth,Cooper,rcooper@example.net,555-678-9012,Southeast Financial,Investment Analyst,Partner Referral,Active,2023-05-10,2025-03-26,High engagement user, frequent feature requests
+37,George,Reed,greed@example.com,555-789-0123,United Manufacturing,Plant Manager,Email Campaign,Cancelled,2023-06-15,2024-11-05,Contract not renewed due to changing business needs
+38,Kimberly,Bailey,kbailey@example.org,555-890-1234,Northwest Medical,Procurement Director,Conference,Active,2023-07-20,2025-04-08,Advanced user with multiple department connections
+39,Edward,Bell,ebell@example.net,555-901-2345,Omega Technologies,Software Engineer,Webinar,Trial,2023-08-25,2025-04-13,Extended trial phase, decision pending Q2 2025
+40,Virginia,Murphy,vmurphy@example.com,555-012-3456,Century Manufacturing,Operations Director,Cold Email,Active,2023-09-30,2025-03-19,Expanded from 10 to 50 user licenses in first year
+41,Raymond,Rivera,rrivera@example.org,555-123-4567,Global Transport,Fleet Manager,Trade Show,Active,2023-10-05,2025-04-04,Uses API integration with internal systems
+42,Julie,Turner,jturner@example.net,555-234-5678,Eastern Healthcare,IT Procurement,Referral,Cancelled,2023-11-10,2024-07-22,Short-term project concluded as planned
+43,Lawrence,Phillips,lphillips@example.com,555-345-6789,Mountain Data,CTO,Website,Active,2023-12-15,2025-04-17,Piloting new premium tier features since January
+44,Judith,Campbell,jcampbell@example.org,555-456-7890,Innovative Retail,Digital Manager,Email Campaign,New,2024-01-20,2025-04-03,Recently converted from freemium to paid plan
+45,Timothy,Parker,tparker@example.net,555-567-8901,Advanced Systems,Engineering Director,Partner Referral,Active,2024-02-25,2025-03-28,Multi-year enterprise agreement signed February 2024
+46,Cheryl,Evans,cevans@example.com,555-678-9012,Reliable Solutions,Account Manager,Conference,Trial,2024-03-01,2025-04-12,Evaluating for potential company-wide rollout
+47,Gerald,Edwards,gedwards@example.org,555-789-0123,Capital Construction,Project Director,Cold Call,Active,2024-04-05,2025-04-09,Quick conversion from prospect to paying customer
+48,Alice,Collins,acollins@example.net,555-890-1234,Urban Planning Group,Senior Designer,Webinar,Active,2024-05-10,2025-03-25,Premium feature user with custom training program
+49,Wayne,Stewart,wstewart@example.com,555-901-2345,Federal Solutions,Compliance Officer,Referral,Onboarding,2024-06-15,2025-04-01,Large-scale implementation in progress
+50,Bonnie,Sanchez,bsanchez@example.org,555-012-3456,Heritage Bank,Finance Director,Website,Active,2024-07-20,2025-04-11,Integrated with existing financial systems
+51,Glenn,Morris,gmorris@example.net,555-123-4567,Future Technologies,Innovation Lead,Trade Show,Active,2024-08-25,2025-03-18,Early adopter of newest platform features
+52,Joyce,Rogers,jrogers@example.com,555-234-5678,Clear Water Utilities,Sustainability Director,Email Campaign,New,2024-09-30,2025-04-05,Recently completed onboarding program
+53,Victor,Reed,vreed@example.org,555-345-6789,Metropolitan Services,Operations Manager,Cold Email,Trial,2024-10-05,2025-04-15,Extended trial with potential large deployment
+54,Teresa,Cook,tcook@example.net,555-456-7890,Northern Electronics,Purchasing Agent,Referral,Active,2024-11-10,2025-04-02,Small business with consistent usage pattern
+55,Russell,Morgan,rmorgan@example.com,555-567-8901,Western Healthcare,IT Director,Conference,Active,2024-12-15,2025-03-29,Expanding usage to additional departments
+56,Amy,Bell,abell@example.org,555-678-9012,Coastal Logistics,Supply Chain Manager,Website,New,2025-01-20,2025-04-14,New customer with high engagement metrics
+57,Bruce,Murphy,bmurphy@example.net,555-789-0123,Southern Manufacturing,Plant Supervisor,Webinar,Trial,2025-02-25,2025-04-08,Evaluating against legacy system
+58,Lillian,Rivera,lrivera@example.com,555-890-1234,Central Finance,Investment Manager,Partner Referral,Active,2025-03-01,2025-04-06,Fast-tracked implementation with executive sponsor
+59,Craig,Turner,cturner@example.org,555-901-2345,Sunrise Technologies,Technical Director,Email Campaign,Onboarding,2025-04-05,2025-04-16,Currently in implementation phase
